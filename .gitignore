@@ -1,5 +1,11 @@
 # FalkorDB Claude RAG Architecture — .gitignore
 
+# ── Agent / Tooling (local-only, never commit) ────────────────
+.serena/
+.agent
+.agents
+.ag-role
+
 # Python
 __pycache__/
 *.py[cod]

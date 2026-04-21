@@ -1,0 +1,94 @@
+version: "3.9"
+
+# ============================================================
+# FalkorDB × Claude — Sovereign Graph RAG Architecture
+# Production-ready Docker Compose stack
+#
+# Services:
+#   - falkordb       : Knowledge Graph store (Redis-protocol)
+#   - graph-rag      : Python Graph RAG service (FastAPI)
+#
+# Usage:
+#   docker compose up --build
+#   docker compose down -v   # tear down including volumes
+# ============================================================
+
+networks:
+  rag-network:
+    driver: bridge
+    name: rag-network
+
+volumes:
+  falkordb-data:
+    name: falkordb-data
+
+services:
+
+  # ----------------------------------------------------------
+  # FalkorDB — Low-latency Knowledge Graph
+  # Exposes Redis-compatible port 6379 and web UI on 3000
+  # ----------------------------------------------------------
+  falkordb:
+    image: falkordb/falkordb:latest
+    container_name: falkordb
+    restart: unless-stopped
+    ports:
+      - "6379:6379"    # Redis-compatible graph query port
+      - "3000:3000"    # RedisInsight web dashboard
+    volumes:
+      - falkordb-data:/data
+      - ./docker/falkordb/init.cypher:/docker-entrypoint-initdb.d/init.cypher:ro
+    environment:
+      - REDIS_ARGS=--save 60 1 --loglevel warning
+    networks:
+      - rag-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "-p", "6379", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+  # ----------------------------------------------------------
+  # Graph RAG Service — FastAPI Python Application
+  # Connects to FalkorDB, runs Cypher queries, calls Claude
+  # ----------------------------------------------------------
+  graph-rag:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: graph-rag-service
+    restart: unless-stopped
+    ports:
+      - "8000:8000"    # FastAPI HTTP API
+    environment:
+      # Anthropic — inject your API key at runtime
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:?err_missing_anthropic_key}
+      # FalkorDB connection (internal Docker DNS)
+      - FALKORDB_HOST=falkordb
+      - FALKORDB_PORT=6379
+      - FALKORDB_GRAPH_NAME=enterprise_kg
+      # Application config
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - APP_ENV=${APP_ENV:-development}
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      falkordb:
+        condition: service_healthy
+    volumes:
+      # Mount source for hot-reload in development
+      - ./src:/app/src:ro
+    networks:
+      - rag-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    command: >
+      uvicorn src.api:app
+        --host 0.0.0.0
+        --port 8000
+        --reload
+        --log-level ${LOG_LEVEL:-info}

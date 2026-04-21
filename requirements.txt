@@ -1,0 +1,34 @@
+# ============================================================
+# FalkorDB × Claude — Graph RAG Architecture
+# Python Dependencies
+# ============================================================
+
+# ── LLM / AI ─────────────────────────────────────────────────
+anthropic>=0.40.0           # Official Anthropic Python SDK (Claude 3.x)
+
+# ── Graph Database ────────────────────────────────────────────
+falkordb>=1.0.2             # FalkorDB Python client (Redis-protocol, Cypher)
+
+# ── Web API Framework ─────────────────────────────────────────
+fastapi>=0.115.0            # High-performance async API framework
+uvicorn[standard]>=0.32.0  # ASGI server with hot-reload support
+pydantic>=2.9.0             # Data validation and settings management
+pydantic-settings>=2.6.0   # Environment variable settings management
+
+# ── HTTP Client ───────────────────────────────────────────────
+httpx>=0.28.0               # Async HTTP client (used by Anthropic SDK)
+
+# ── Environment & Config ──────────────────────────────────────
+python-dotenv>=1.0.1        # .env file loader for local development
+
+# ── Logging & Observability ───────────────────────────────────
+structlog>=24.4.0           # Structured logging (JSON output for SIEM ingestion)
+
+# ── MCP (Model Context Protocol) ─────────────────────────────
+# TODO: Add mcp>=1.x.x when the official Python SDK stabilises
+# See: https://modelcontextprotocol.io/
+
+# ── Testing ───────────────────────────────────────────────────
+pytest>=8.3.0
+pytest-asyncio>=0.24.0
+pytest-httpx>=0.30.0

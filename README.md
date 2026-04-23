@@ -154,6 +154,7 @@ curl -X POST http://localhost:8000/query \
 ```
 
 ---
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/WizardofTryout/FalkorDB-Claude-RAG-Architecture)
 
 ## 📁 Repository Structure
 

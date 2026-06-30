@@ -1,21 +1,19 @@
-MIT License
+Copyright (c) 2026 Matthias Köhler (Oszillation Media & AI Ecosystems). All rights reserved.
 
-Copyright (c) 2026 Matthias Köhler
+CONFIDENTIAL AND PROPRIETARY.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This software and all associated documentation files (the "Software") are the exclusive intellectual property of Matthias Köhler. 
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+LICENSE FOR EVALUATION PURPOSES ONLY:
+Permission is hereby granted strictly and solely to TÜV SÜD Akademie GmbH and its designated internal technical evaluators (including Dr. Ibrahim Halfaoui) to review and evaluate the source code internally. This permission is granted exclusively in connection with the ongoing discussions regarding a potential strategic cooperation.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+STRICTLY PROHIBITED USES:
+1. Any commercial use, production deployment, or integration of this Software into internal or customer-facing enterprise offerings is strictly prohibited without a prior, separate written commercial license agreement signed by Matthias Köhler.
+2. Modification, distribution, sublicensing, mirroring, or disclosing of the source code to any third party outside the designated evaluation team is strictly prohibited.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY.
+---
+THIRD-PARTY COMPONENTS NOTICE:
+This Software utilizes FalkorDB as a third-party database dependency. FalkorDB is the intellectual property of its respective owners and is subject to its own original licensing terms (e.g., AGPL v3 / source-available terms). 
+
+The proprietary and confidential restrictions set forth by Matthias Köhler apply exclusively to the custom orchestration layer, specific Claude RAG integration logic, and architecture blueprints developed by Matthias Köhler. This license does not modify, extend, or infringe upon the original license terms of FalkorDB or any other open-source dependencies used herein.

@@ -231,9 +231,11 @@ Contributions are welcome! Please read `CONTRIBUTING.md` and open an issue befor
 
 ---
 
-## 📄 License
+## License & Legal
 
-MIT License — see [LICENSE](LICENSE) for details.
+This project is confidential and protected under a **Proprietary Evaluation License**. Commercial use, production deployment, modification, or distribution is strictly prohibited without a separate, explicit written agreement from Matthias Köhler (Oszillation Media & AI Ecosystems). Please refer to the [LICENSE](LICENSE) file for full terms, conditions, and third-party notices.
+
+⚠️ **Important:** These blueprints provide a security architecture pattern and reference implementation. They are not a substitute for a formal security assessment by a qualified professional. Always conduct a Data Protection Impact Assessment (DPIA) under GDPR Article 35 before deploying AI tooling against personal data in regulated environments. Engage your Data Protection Officer and Information Security team before production use.
 
 ---
 
